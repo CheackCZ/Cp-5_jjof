@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+    <persistence-unit name="default">
+        <class>cz.cvut.fel.dbs.Client</class>
+        <class>cz.cvut.fel.dbs.Employee</class>
+        <class>cz.cvut.fel.dbs.LastName</class>
+        <class>cz.cvut.fel.dbs.Project</class>
+        <class>cz.cvut.fel.dbs.ProjectAssign</class>
+        <class>cz.cvut.fel.dbs.Sprint</class>
+        <class>cz.cvut.fel.dbs.Supervisor</class>
+        <class>cz.cvut.fel.dbs.Task</class>
+        <class>cz.cvut.fel.dbs.TimeEntry</class>
+        <class>cz.cvut.fel.dbs.User</class>
+        <class>cz.cvut.fel.dbs.UserDetail</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://slon.felk.cvut.cz:5432/postgres"/>
+            <property name="javax.persistence.jdbc.user" value="jonasja2"/>
+            <property name="javax.persistence.jdbc.password" value="jjofpivo"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
