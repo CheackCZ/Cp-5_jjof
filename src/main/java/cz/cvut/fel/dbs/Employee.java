@@ -54,4 +54,8 @@ public class Employee extends User {
         this.ssn = ssn;
     }
 
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
 }

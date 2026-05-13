@@ -1,5 +1,6 @@
 package cz.cvut.fel.dbs.dao;
 
+import cz.cvut.fel.dbs.Employee;
 import cz.cvut.fel.dbs.Project;
 
 import java.time.LocalDate;

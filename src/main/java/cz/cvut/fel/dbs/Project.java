@@ -93,4 +93,9 @@ public class Project {
         this.client = client;
     }
 
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
 }
