@@ -93,6 +93,10 @@ public class Project {
         this.client = client;
     }
 
+    public int getProjectId() {
+        return id;
+    }
+
 
     public Set<Employee> getEmployees() { return employees; }
 
