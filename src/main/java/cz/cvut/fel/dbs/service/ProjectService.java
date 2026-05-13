@@ -20,36 +20,6 @@ public class ProjectService {
     @Inject
     private EmployeeDaoImpl employeeDao;
 
-    public Optional<Project> findProjectById(Integer projectId) {
-        return projectDao.findById(projectId);
-    }
-
-    public List<Project> findAllProjects() {
-        return projectDao.findAll();
-    }
-
-    @Transactional
-    public Project createProject(Project project) {
-        projectDao.save(project);
-        return project;
-    }
-
-    @Transactional
-    public Project updateProject(Project project) {
-        projectDao.update(project);
-        return project;
-    }
-
-    @Transactional
-    public void deleteProject(Integer projectId) {
-        Project project = projectDao.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        "Project with id " + projectId + " does not exist."
-                ));
-
-        projectDao.delete(project);
-    }
-
     @Transactional
     public void assignEmployeeToProject(Integer projectId, Integer employeeId) {
         Project project = projectDao.findById(projectId)

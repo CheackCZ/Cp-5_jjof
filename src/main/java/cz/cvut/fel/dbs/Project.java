@@ -94,8 +94,6 @@ public class Project {
     }
 
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
+    public Set<Employee> getEmployees() { return employees; }
 
 }

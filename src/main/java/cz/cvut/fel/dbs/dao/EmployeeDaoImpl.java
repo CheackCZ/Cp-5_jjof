@@ -49,9 +49,23 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> {
         return em.createQuery(
                 "SELECT e FROM Employee e " +
                 "LEFT JOIN FETCH e.projects " +
-                "WHERE e.employeeId = :id", Employee.class)
+                "WHERE e.id = :id", Employee.class)
                 .setParameter("id", employeeId)
                 .getResultStream()
                 .findFirst();
     }
+
+    public Long countEmployees() {
+        return em.createQuery(
+                "SELECT COUNT(e) FROM Employee e",
+                Long.class
+        ).getSingleResult();
+    }
+
+    public void sleep(Integer seconds) {
+        em.createNativeQuery("SELECT pg_sleep(:seconds)")
+                .setParameter("seconds", seconds)
+                .getSingleResult();
+    }
+
 }
