@@ -20,7 +20,6 @@ public class Project {
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-
     @ManyToMany(mappedBy = "projects")
     private Set<Employee> employees = new HashSet<>();
 
