@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "client")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Client extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

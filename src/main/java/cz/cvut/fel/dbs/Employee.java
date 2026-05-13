@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "employee")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Employee extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
