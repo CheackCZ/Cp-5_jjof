@@ -15,6 +15,8 @@ public class EmployeeService {
 
     @Transactional
     public void demonstrateReadCommittedCountChange() {
+        // employeeDao.setReadCommittedIsolationLevel();
+
         Long countBefore = employeeDao.countEmployees();
         System.out.println("Employee count before sleep: " + countBefore);
 
