@@ -3,6 +3,8 @@ package cz.cvut.fel.dbs;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "project")
@@ -17,6 +19,10 @@ public class Project {
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
+
+
+    @ManyToMany(mappedBy = "projects")
+    private Set<Employee> employees = new HashSet<>();
 
     @Column(name = "end_date")
     private LocalDate endDate;

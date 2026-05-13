@@ -3,11 +3,22 @@ package cz.cvut.fel.dbs;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Employee extends User {
+
+    @ManyToMany
+    @JoinTable(
+            name = "project_assign",
+            joinColumns        = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private Set<Project> projects = new HashSet<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id", nullable = false)
