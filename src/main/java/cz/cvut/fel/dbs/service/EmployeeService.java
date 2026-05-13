@@ -14,8 +14,8 @@ public class EmployeeService {
     private EmployeeDaoImpl employeeDao;
 
     @Transactional
-    public void demonstrateReadCommittedCountChange() {
-        // employeeDao.setReadCommittedIsolationLevel();
+    public void countEmployeesDelayed() {
+        //employeeDao set isolation level Serializable to prevent phantom reads
 
         Long countBefore = employeeDao.countEmployees();
         System.out.println("Employee count before sleep: " + countBefore);
