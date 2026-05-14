@@ -13,6 +13,10 @@ public class EmployeeService {
     @Inject
     private EmployeeDaoImpl employeeDao;
 
+    public EmployeeService(EmployeeDaoImpl employeeDao) {
+        this.employeeDao = employeeDao;
+    }
+
     @Transactional
     public void countEmployeesDelayed() {
         //employeeDao set isolation level Serializable to prevent phantom reads

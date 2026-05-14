@@ -15,7 +15,13 @@ public class UserService {
     private UserDetailDaoImpl userDetailDao;
 
     @Inject
-    private LastNameDao lastNameDao;
+    private LastNameDaoImpl lastNameDao;
+
+    public UserService(UserDaoImpl userDao, UserDetailDaoImpl userDetailDao, LastNameDaoImpl lastNameDao) {
+        this.userDao = userDao;
+        this.userDetailDao = userDetailDao;
+        this.lastNameDao = lastNameDao;
+    }
 
     @Transactional
     public void createUserWithDetails(String username, String password, String email, String phoneNumber, String street, String city, String postalCode, String firstname, String... lastnames ) throws Exception {
