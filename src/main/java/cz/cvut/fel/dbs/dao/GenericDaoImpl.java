@@ -44,4 +44,7 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
     }
 
     public void setEntityManager(EntityManager em) {this.em = em;}
+    public void flush() {
+        em.flush();
+    }
 }
