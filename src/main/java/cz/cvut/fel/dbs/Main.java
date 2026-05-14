@@ -1,14 +1,13 @@
 package cz.cvut.fel.dbs;
 
 import cz.cvut.fel.dbs.dao.*;
-import cz.cvut.fel.dbs.service.EmployeeService;
-import cz.cvut.fel.dbs.service.ProjectService;
-import cz.cvut.fel.dbs.service.TaskService;
-import cz.cvut.fel.dbs.service.UserService;
+import cz.cvut.fel.dbs.service.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDate;
 
 public class Main {
 
@@ -18,7 +17,44 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
+
+
+
+
+
         try {
+
+            // TimeEntryService log time and activate task (set to in progress) if still set to new
+//            var timeEntryDao = new TimeEntryDaoImpl();
+//            var taskDao = new TaskDaoImpl();
+//
+//            timeEntryDao.setEntityManager(em);
+//            taskDao.setEntityManager(em);
+//
+//            var timeEntryService = new TimeEntryService(timeEntryDao, taskDao);
+//            runInTransaction(em, () -> {
+//                timeEntryService.logTimeAndActivateTask(3,4,4, 1, 25, "lorem");
+//
+//            });
+
+            //closeSprintAndRolloverTasks - creates a new sprint and moves over all tasks which aren't done
+
+//
+//            var sprintDao = new SprintDaoImpl();
+//            var taskDao = new TaskDaoImpl();
+//
+//            sprintDao.setEntityManager(em);
+//            taskDao.setEntityManager(em);
+//
+//            var sprintService = new SprintService(sprintDao, taskDao);
+//            runInTransaction(em, () -> {
+//                sprintService.closeSprintAndRolloverTasks(1,1,20, LocalDate.now(), LocalDate.of(2026,5,28));
+//
+//            });
+
+
+
+            //
             // 1. TaskService: Create task and if no sprint create new sprint
 //            ProjectDaoImpl projectDao = new ProjectDaoImpl();
 //            SprintDaoImpl sprintDao = new SprintDaoImpl();
