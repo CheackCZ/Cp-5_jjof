@@ -2,7 +2,10 @@ package cz.cvut.fel.dbs;
 
 import cz.cvut.fel.dbs.dao.EmployeeDaoImpl;
 import cz.cvut.fel.dbs.dao.ProjectDaoImpl;
+import cz.cvut.fel.dbs.dao.SprintDaoImpl;
+import cz.cvut.fel.dbs.dao.TaskDaoImpl;
 import cz.cvut.fel.dbs.service.ProjectService;
+import cz.cvut.fel.dbs.service.TaskService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -20,16 +23,17 @@ public class Main {
 
             transaction.begin();
 
+            // TaskService: Create task and if no sprint create new sprint
             ProjectDaoImpl projectDao = new ProjectDaoImpl();
-            EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
+            SprintDaoImpl sprintDao = new SprintDaoImpl();
+            TaskDaoImpl taskDao = new TaskDaoImpl();
 
             projectDao.setEntityManager(em);
-            employeeDao.setEntityManager(em);
+            sprintDao.setEntityManager(em);
+            taskDao.setEntityManager(em);
 
-            Project project = em.find(Project.class, 1);
-
-            var projectService = new ProjectService(projectDao, employeeDao);
-            projectService.assignEmployeeToProject(1, 28033);
+            TaskService taskService = new TaskService(projectDao, sprintDao, taskDao);
+            taskService.createTaskAndCreateSprintIfMissing(20, 1, "Test-task", "new");
 
             transaction.commit();
 

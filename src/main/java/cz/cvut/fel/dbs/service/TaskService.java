@@ -5,6 +5,7 @@ import cz.cvut.fel.dbs.Sprint;
 import cz.cvut.fel.dbs.SprintId;
 import cz.cvut.fel.dbs.Task;
 import cz.cvut.fel.dbs.TaskId;
+import cz.cvut.fel.dbs.dao.EmployeeDaoImpl;
 import cz.cvut.fel.dbs.dao.ProjectDaoImpl;
 import cz.cvut.fel.dbs.dao.SprintDaoImpl;
 import cz.cvut.fel.dbs.dao.TaskDaoImpl;
@@ -26,6 +27,14 @@ public class TaskService {
 
     @Inject
     private ProjectDaoImpl projectDao;
+
+    public TaskService(ProjectDaoImpl projectDao, SprintDaoImpl sprintDao, TaskDaoImpl taskDao) {
+        this.projectDao = projectDao;
+        this.sprintDao = sprintDao;
+        this.taskDao = taskDao;
+    }
+
+    public TaskService() {}
 
     @Transactional
     public Task createTaskAndCreateSprintIfMissing(
