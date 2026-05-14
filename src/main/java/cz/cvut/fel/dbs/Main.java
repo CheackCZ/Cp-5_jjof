@@ -1,5 +1,8 @@
 package cz.cvut.fel.dbs;
 
+import cz.cvut.fel.dbs.dao.EmployeeDaoImpl;
+import cz.cvut.fel.dbs.dao.ProjectDaoImpl;
+import cz.cvut.fel.dbs.service.ProjectService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,26 +12,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
 
         try {
 
             transaction.begin();
 
-            Project project = entityManager.find(Project.class, 1);
-            Employee employee = entityManager.find(Employee.class, 1);
+            ProjectDaoImpl projectDao = new ProjectDaoImpl();
+            EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
 
-            project.getEmployees().add(employee);
-            employee.getProjects().add(project);
+            projectDao.setEntityManager(em);
+            employeeDao.setEntityManager(em);
 
-            entityManager.merge(project);
-            entityManager.merge(employee);
+            Project project = em.find(Project.class, 1);
+
+            var projectService = new ProjectService(projectDao, employeeDao);
+            projectService.assignEmployeeToProject(1, 28033);
 
             transaction.commit();
-
-            System.out.println("Employee assigned to project successfully.");
 
         } catch (Exception e) {
 
@@ -40,8 +43,8 @@ public class Main {
 
         } finally {
 
-            entityManager.close();
-            entityManagerFactory.close();
+            em.close();
+            emf.close();
         }
     }
 }

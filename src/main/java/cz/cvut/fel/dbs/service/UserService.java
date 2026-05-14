@@ -45,7 +45,7 @@ public class UserService {
         userDetailDao.save(userDetails);
 
         // create and save last names
-        for (var  lastname : lastnames) {
+        for (var lastname : lastnames) {
 
             var lastNameId = new LastNameId();
             lastNameId.setLastName(lastname);

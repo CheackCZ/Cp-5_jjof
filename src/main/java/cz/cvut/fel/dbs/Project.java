@@ -92,11 +92,19 @@ public class Project {
         this.client = client;
     }
 
-    public int getProjectId() {
-        return id;
-    }
-
+    public int getProjectId() { return id; }
 
     public Set<Employee> getEmployees() { return employees; }
 
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", status='" + status + '\'' +
+                ", priority='" + priority + '\'' +
+                '}';
+    }
 }

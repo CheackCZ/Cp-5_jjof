@@ -5,6 +5,6 @@ import cz.cvut.fel.dbs.Project;
 
 public class LastNameDao extends GenericDaoImpl<LastName, Integer>  {
     protected LastNameDao() {
-        super(entityClass);
+        super(LastName.class);
     }
 }

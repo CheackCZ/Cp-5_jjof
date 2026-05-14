@@ -11,7 +11,7 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
     @PersistenceContext
     protected EntityManager em;
 
-    private final Class<T> entityClass;
+    protected final Class<T> entityClass;
 
     protected GenericDaoImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -42,4 +42,6 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
         String jpql = "SELECT e FROM " + entityClass.getSimpleName() + " e";
         return em.createQuery(jpql, entityClass).getResultList();
     }
+
+    public void setEntityManager(EntityManager em) {this.em = em;}
 }

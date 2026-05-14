@@ -26,23 +26,29 @@ public class ProjectService {
     @Inject
     private UserDaoImpl userDao;
 
+    public ProjectService(ProjectDaoImpl projectDao, EmployeeDaoImpl employeeDao) {
+        this.projectDao = projectDao;
+        this.employeeDao = employeeDao;
+    }
+
+    public ProjectService() {}
+
     @Transactional
-    public void assignEmployeeToProject(Integer projectId, Integer employeeId) {
+    public void assignEmployeeToProject(Integer projectId, Integer userId) {
         Project project = projectDao.findById(projectId)
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Project with id " + projectId + " does not exist."
                 ));
 
-        Employee employee = employeeDao.findById(employeeId)
+        Employee employee = employeeDao.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException(
-                        "Employee with id " + employeeId + " does not exist."
+                        "Employee with user_id " + userId + " does not exist."
                 ));
 
         project.getEmployees().add(employee);
         employee.getProjects().add(project);
 
         projectDao.update(project);
-        employeeDao.update(employee);
     }
 
     @Transactional
