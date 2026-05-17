@@ -16,16 +16,10 @@ import jakarta.transaction.Transactional;
 
 import java.time.LocalDate;
 
-@ApplicationScoped
 public class TaskService {
 
-    @Inject
     private TaskDaoImpl taskDao;
-
-    @Inject
     private SprintDaoImpl sprintDao;
-
-    @Inject
     private ProjectDaoImpl projectDao;
 
     public TaskService(ProjectDaoImpl projectDao, SprintDaoImpl sprintDao, TaskDaoImpl taskDao) {
@@ -36,7 +30,6 @@ public class TaskService {
 
     public TaskService() {}
 
-    @Transactional
     public Task createTaskAndCreateSprintIfMissing(
             Integer projectId,
             Integer taskNumber,

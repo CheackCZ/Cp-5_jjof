@@ -11,13 +11,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@ApplicationScoped
 public class TimeEntryService {
 
-    @Inject
     TimeEntryDaoImpl timeEntryDao;
-
-    @Inject
     TaskDaoImpl taskDao;
 
     public TimeEntryService(TimeEntryDaoImpl timeEntryDao, TaskDaoImpl taskDao) {
@@ -29,7 +25,6 @@ public class TimeEntryService {
 
     // 2. Přidání časového záznamu k úkolu — pokud úkol ještě nemá status "in progress", aktualizuje ho
     // nutné aby prošel trigger, dát pro jistotu project assign předtím
-    @Transactional
     public TimeEntry logTimeAndActivateTask(
             Integer projectId,
             Integer sprintNumber,

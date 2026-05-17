@@ -8,13 +8,10 @@ import jakarta.transaction.Transactional;
 
 public class UserService {
 
-    @Inject
     private UserDaoImpl userDao;
 
-    @Inject
     private UserDetailDaoImpl userDetailDao;
 
-    @Inject
     private LastNameDaoImpl lastNameDao;
 
     public UserService(UserDaoImpl userDao, UserDetailDaoImpl userDetailDao, LastNameDaoImpl lastNameDao) {
@@ -23,7 +20,6 @@ public class UserService {
         this.lastNameDao = lastNameDao;
     }
 
-    @Transactional
     public void createUserWithDetails(String username, String password, String email, String phoneNumber, String street, String city, String postalCode, String firstname, String... lastnames ) throws Exception {
 
         // create and save user

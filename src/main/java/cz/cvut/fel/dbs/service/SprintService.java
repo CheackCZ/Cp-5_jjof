@@ -14,13 +14,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@ApplicationScoped
 public class SprintService {
 
-    @Inject
     private SprintDaoImpl sprintDao;
-
-    @Inject
     private TaskDaoImpl taskDao;
 
 
@@ -30,7 +26,6 @@ public class SprintService {
 
 
     // 3. Uzavření sprintu — nedokončené úkoly přesune do nového sprintu
-    @Transactional
     public Sprint closeSprintAndRolloverTasks(
             Integer projectId,
             Integer sprintNumber,
