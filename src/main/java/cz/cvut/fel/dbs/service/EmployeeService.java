@@ -2,6 +2,7 @@ package cz.cvut.fel.dbs.service;
 
 import cz.cvut.fel.dbs.Employee;
 import cz.cvut.fel.dbs.dao.EmployeeDaoImpl;
+import cz.cvut.fel.dbs.utils.PasswordUtils;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -29,11 +30,10 @@ public class EmployeeService {
     }
 
     // run parallel to countEmployeesDelayed
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) throws Exception {
+
+        employee.setPassword(PasswordUtils.hashPassword(employee.getPassword()));
         employeeDao.save(employee);
     }
-
-
-
 
 }
