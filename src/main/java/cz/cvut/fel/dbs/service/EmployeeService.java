@@ -1,5 +1,6 @@
 package cz.cvut.fel.dbs.service;
 
+import cz.cvut.fel.dbs.Employee;
 import cz.cvut.fel.dbs.dao.EmployeeDaoImpl;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -26,5 +27,13 @@ public class EmployeeService {
         Long countAfter = employeeDao.countEmployees();
         System.out.println("Employee count after sleep: " + countAfter);
     }
+
+    // run parallel to countEmployeesDelayed
+    public void addEmployee(Employee employee) {
+        employeeDao.save(employee);
+    }
+
+
+
 
 }
