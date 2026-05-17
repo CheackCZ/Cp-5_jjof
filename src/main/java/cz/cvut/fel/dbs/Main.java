@@ -17,44 +17,8 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
 
-
-
-
-
-
         try {
 
-            // TimeEntryService log time and activate task (set to in progress) if still set to new
-//            var timeEntryDao = new TimeEntryDaoImpl();
-//            var taskDao = new TaskDaoImpl();
-//
-//            timeEntryDao.setEntityManager(em);
-//            taskDao.setEntityManager(em);
-//
-//            var timeEntryService = new TimeEntryService(timeEntryDao, taskDao);
-//            runInTransaction(em, () -> {
-//                timeEntryService.logTimeAndActivateTask(3,4,4, 1, 25, "lorem");
-//
-//            });
-
-            //closeSprintAndRolloverTasks - creates a new sprint and moves over all tasks which aren't done
-
-//
-//            var sprintDao = new SprintDaoImpl();
-//            var taskDao = new TaskDaoImpl();
-//
-//            sprintDao.setEntityManager(em);
-//            taskDao.setEntityManager(em);
-//
-//            var sprintService = new SprintService(sprintDao, taskDao);
-//            runInTransaction(em, () -> {
-//                sprintService.closeSprintAndRolloverTasks(1,1,20, LocalDate.now(), LocalDate.of(2026,5,28));
-//
-//            });
-
-
-
-            //
             // 1. TaskService: Create task and if no sprint create new sprint
 //            ProjectDaoImpl projectDao = new ProjectDaoImpl();
 //            SprintDaoImpl sprintDao = new SprintDaoImpl();
@@ -69,7 +33,7 @@ public class Main {
 //                taskService.createTaskAndCreateSprintIfMissing(20, 1, "Test-task", "new");
 //            });
 
-            // 2. TaskService: Create task and if no sprint create new sprint
+            // 2. UserService: create user with user details being created as well
 //            UserDaoImpl userDao = new UserDaoImpl();
 //            UserDetailDaoImpl userDetailDao = new UserDetailDaoImpl();
 //            LastNameDaoImpl lastNameDao = new LastNameDaoImpl();
@@ -82,18 +46,8 @@ public class Main {
 //
 //            runInTransaction(em, () -> {
 //                try {
-//                    userService.createUserWithDetails(
-//                            "testuser_002",
-//                            "testpassword",
-//                            "test002@test.com",
-//                            "123456780",
-//                            "Second street 421",
-//                            "Prague",
-//                            "19800",
-//                            "Petr",
-//                            "Svoboda",
-//                            "Novak"
-//                    );
+//                    userService.createUserWithDetails("testuser_002", "testpassword","test002@test.com", "123456780",
+//                                                      "Second street 421", "Prague", "19800", "Petr", "Svoboda", "Novak");
 //                } catch (Exception e) {
 //                    throw new RuntimeException(e);
 //                }
@@ -106,6 +60,33 @@ public class Main {
 //            EmployeeService employeeService = new EmployeeService(employeeDao);
 //            runInTransaction(em, () -> {
 //                employeeService.countEmployeesDelayed();
+//            });
+
+
+            // 4. TimeEntryService: log time and activate task (set to in progress) if still set to new
+//            var timeEntryDao = new TimeEntryDaoImpl();
+//            var taskDao = new TaskDaoImpl();
+//
+//            timeEntryDao.setEntityManager(em);
+//            taskDao.setEntityManager(em);
+//
+//            var timeEntryService = new TimeEntryService(timeEntryDao, taskDao);
+//            runInTransaction(em, () -> {
+//                timeEntryService.logTimeAndActivateTask(3,4,4, 1, 25, "lorem");
+//
+//            });
+
+            // 5. CloseSprintAndRolloverTasks - creates a new sprint and moves over all tasks which aren't done
+//            var sprintDao = new SprintDaoImpl();
+//            var taskDao = new TaskDaoImpl();
+//
+//            sprintDao.setEntityManager(em);
+//            taskDao.setEntityManager(em);
+//
+//            var sprintService = new SprintService(sprintDao, taskDao);
+//            runInTransaction(em, () -> {
+//                sprintService.closeSprintAndRolloverTasks(1,1,20, LocalDate.now(), LocalDate.of(2026,5,28));
+//
 //            });
 
         } finally {
