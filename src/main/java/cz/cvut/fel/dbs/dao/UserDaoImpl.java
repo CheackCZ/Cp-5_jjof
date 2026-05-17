@@ -18,15 +18,4 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> {
                 .getResultStream()
                 .findFirst();
     }
-
-    /** Fetch user i s detaily (JOIN FETCH) */
-//    public Optional<User> findByIdWithDetails(Integer userId) {
-//        return em.createQuery(
-//                "SELECT u FROM User u " +
-//                "LEFT JOIN FETCH u.userDetails " +
-//                "WHERE u.userId = :id", User.class)
-//                .setParameter("id", userId)
-//                .getResultStream()
-//                .findFirst();
-//    }
 }

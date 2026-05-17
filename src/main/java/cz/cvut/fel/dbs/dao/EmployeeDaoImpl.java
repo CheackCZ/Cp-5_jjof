@@ -68,10 +68,5 @@ public class EmployeeDaoImpl extends GenericDaoImpl<Employee, Integer> {
                 .getSingleResult();
     }
 
-//    public void setReadCommittedIsolationLevel() {
-//        em.createNativeQuery(
-//                "SET TRANSACTION ISOLATION LEVEL READ COMMITTED"
-//        ).executeUpdate();
-//    }
 
 }
